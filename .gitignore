@@ -1,0 +1,6 @@
+node_modules
+dist
+.pydeps
+.DS_Store
+*.local
+.vite
