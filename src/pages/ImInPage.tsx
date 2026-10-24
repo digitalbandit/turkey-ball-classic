@@ -1,5 +1,6 @@
 import { FormEvent, useMemo, useState } from 'react'
 import { Crown } from '../components/Icons'
+import { rsvp } from '../data/event'
 
 type Rsvp = {
   name: string
@@ -12,6 +13,20 @@ type Rsvp = {
 }
 
 const STORAGE_KEY = 'tbc-rsvp-2026'
+
+type Status = 'idle' | 'sending' | 'error' | 'closed'
+
+async function sendRsvp(payload: Rsvp & { website: string }) {
+  // text/plain keeps this a "simple" request, so the browser skips the CORS
+  // preflight that Apps Script can't answer.
+  const res = await fetch(rsvp.endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+  })
+  const data = (await res.json()) as { ok?: boolean }
+  if (!data.ok) throw new Error('rejected')
+}
 
 export function ImInPage() {
   const existing = useMemo(() => {
@@ -33,11 +48,30 @@ export function ImInPage() {
     notes: existing?.notes ?? '',
   })
 
-  function onSubmit(e: FormEvent) {
+  const [status, setStatus] = useState<Status>('idle')
+  const [website, setWebsite] = useState('')
+
+  async function onSubmit(e: FormEvent) {
     e.preventDefault()
+    if (status === 'sending') return
+    if (!rsvp.endpoint) {
+      setStatus('closed')
+      return
+    }
     const payload: Rsvp = { ...form, at: new Date().toISOString() }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
-    setDone(payload)
+    setStatus('sending')
+    try {
+      await sendRsvp({ ...payload, website })
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
+      } catch {
+        // This device just won't remember it. The list still has it.
+      }
+      setStatus('idle')
+      setDone(payload)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -83,6 +117,7 @@ export function ImInPage() {
             <button type="button" className="text-link" onClick={() => setDone(null)}>
               Edit RSVP
             </button>
+            <p className="rsvp-fine">Same email = same spot. Edits replace the old one.</p>
           </div>
         ) : (
           <form className="clipboard-paper" onSubmit={onSubmit}>
@@ -111,6 +146,7 @@ export function ImInPage() {
                 <input
                   required
                   inputMode="numeric"
+                  pattern="[0-9]{1,2}"
                   value={form.adults}
                   onChange={(e) => setForm({ ...form, adults: e.target.value })}
                 />
@@ -120,6 +156,7 @@ export function ImInPage() {
                 <input
                   required
                   inputMode="numeric"
+                  pattern="[0-9]{1,2}"
                   value={form.kids}
                   onChange={(e) => setForm({ ...form, kids: e.target.value })}
                 />
@@ -144,8 +181,31 @@ export function ImInPage() {
                 placeholder="Glove size, leftover pie, rivalry warnings…"
               />
             </label>
-            <button type="submit" className="ink-btn ink-btn-solid">
-              I’m In
+            <label className="hp-field" aria-hidden="true">
+              Website
+              <input
+                tabIndex={-1}
+                autoComplete="off"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </label>
+            {status === 'error' && (
+              <p className="rsvp-error" role="alert">
+                That one didn’t go through. Give it another swing.
+              </p>
+            )}
+            {status === 'closed' && (
+              <p className="rsvp-error" role="alert">
+                The clipboard isn’t out yet. Check back soon.
+              </p>
+            )}
+            <button
+              type="submit"
+              className="ink-btn ink-btn-solid"
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? 'Signing…' : 'I’m In'}
             </button>
           </form>
         )}

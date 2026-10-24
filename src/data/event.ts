@@ -16,6 +16,14 @@ export const event = {
   taglineOneLine: "Last Night's Turkey. Today's Glory.",
 } as const
 
+/**
+ * RSVP endpoint: the Google Apps Script web app URL (ends in /exec).
+ * Setup steps are at the top of rsvp/apps-script.gs. Empty = form shows "not open yet".
+ */
+export const rsvp = {
+  endpoint: '',
+} as const
+
 export const rules = [
   {
     n: 1,

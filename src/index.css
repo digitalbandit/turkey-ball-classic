@@ -1292,6 +1292,33 @@ body.lightbox-open {
   padding: 0.4rem;
 }
 
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.rsvp-error {
+  font-family: var(--font-rules);
+  color: var(--orange-dark);
+  margin: 0 0 0.8rem;
+}
+
+.rsvp-fine {
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  color: var(--navy);
+  opacity: 0.75;
+  margin: 0.4rem 0 0;
+}
+
+.clipboard-paper .ink-btn[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
