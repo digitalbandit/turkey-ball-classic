@@ -10,7 +10,7 @@ export function FaqPage() {
         <h1>FAQ</h1>
         <p className="page-lede">
           The short version: Olive Field 3, Friday after the meal, wiffle then kickball,
-          Green vs. Black.
+          Fowl Play vs. Dirty Birds.
         </p>
       </header>
 

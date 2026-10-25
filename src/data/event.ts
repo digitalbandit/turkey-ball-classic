@@ -43,7 +43,7 @@ export const rules = [
   },
   {
     n: 5,
-    text: 'Teams will be drafted the day before. (Green vs. Black)',
+    text: 'Teams will be drafted the day before. (Fowl Play vs. Dirty Birds)',
   },
 ] as const
 
@@ -56,7 +56,7 @@ export const features = [
   {
     id: 'jerseys',
     title: 'Custom Jerseys',
-    body: 'Teams will be drafted the day before. (Green vs. Black)',
+    body: 'Teams will be drafted the day before. (Fowl Play vs. Dirty Birds)',
   },
   {
     id: 'setup',
@@ -89,7 +89,7 @@ export const faqs = [
   },
   {
     q: 'Are there jerseys?',
-    a: 'Yes. Custom Turkey Ball shirts. Green vs. Black, drafted the day before. Don’t show up already picking sides — that’s how Thanksgiving arguments start.',
+    a: 'Yes. Custom Turkey Ball shirts. Fowl Play vs. Dirty Birds, drafted the day before. Don’t show up already picking sides — that’s how Thanksgiving arguments start.',
   },
   {
     q: 'Where do I park?',

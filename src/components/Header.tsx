@@ -8,6 +8,7 @@ const links = [
   { to: '/rules', label: 'Rules' },
   { to: '/teams', label: 'Teams' },
   { to: '/faq', label: 'FAQ' },
+  { to: '/im-in', label: 'RSVP' },
 ]
 
 export function Header() {

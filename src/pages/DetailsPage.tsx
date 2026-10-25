@@ -56,7 +56,7 @@ export function DetailsPage() {
               </li>
               <li>
                 <span>11:00</span>
-                <p>First pitch. Green vs. Black. Five innings. 8-run cap.</p>
+                <p>First pitch. Fowl Play vs. Dirty Birds. Five innings. 8-run cap.</p>
               </li>
               <li>
                 <span>After</span>

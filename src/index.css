@@ -225,7 +225,7 @@ main {
 .site-nav {
   display: flex;
   justify-content: center;
-  gap: 1.55rem;
+  gap: 1.2rem;
 }
 
 .site-nav a {
@@ -1012,6 +1012,20 @@ body.lightbox-open {
   margin-bottom: 2.2rem;
 }
 
+.teams-banner {
+  max-width: 46rem;
+}
+
+.title-vs {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 0.42em;
+  line-height: 1;
+  color: var(--orange);
+  text-transform: none;
+  margin: 0.15rem 0 0.05rem;
+}
+
 .hand-kicker {
   font-family: var(--font-hand);
   color: var(--orange);
@@ -1157,31 +1171,78 @@ body.lightbox-open {
   margin-bottom: 1.4rem;
 }
 
-.team-poster {
-  min-height: 16rem;
-  padding: 1.6rem 1.4rem;
-  color: var(--paper);
+.team-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 0.7rem;
+  padding: 0.75rem 0.75rem 1.15rem;
+  color: var(--paper);
+  transform: rotate(-0.5deg);
+  transition: transform 0.2s ease;
 }
 
-.team-green {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 40%),
-    #234233;
+.team-card:last-child {
+  transform: rotate(0.6deg);
 }
 
-.team-black {
-  background: #161616;
+.team-card:hover {
+  transform: none;
 }
 
-.team-poster h2 {
+.team-fowl {
+  background: var(--navy);
+}
+
+.team-dirty {
+  background: #c9b48a;
+  color: var(--navy-deep);
+}
+
+.shirt-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.shirt-pair figure {
+  margin: 0;
+}
+
+.shirt-crop {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #f4efe6;
+}
+
+.shirt-crop img {
+  width: 200%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.shirt-crop.is-right img {
+  transform: translateX(-50%);
+}
+
+.shirt-pair figcaption {
+  margin-top: 0.25rem;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+}
+
+.team-copy {
+  padding: 0.15rem 0.35rem 0;
+}
+
+.team-card h2 {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 5rem);
-  line-height: 0.85;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 0.88;
   text-transform: uppercase;
-  margin: 0.2rem 0 0.5rem;
+  margin: 0.15rem 0 0.4rem;
 }
 
 .team-note {
@@ -1353,7 +1414,8 @@ body.lightbox-open {
   .polaroid,
   .ink-btn,
   .hero-art,
-  .gallery-card {
+  .gallery-card,
+  .team-card {
     transition: none;
     transform: none !important;
     opacity: 1;
