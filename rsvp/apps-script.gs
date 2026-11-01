@@ -11,13 +11,16 @@
  *   4. Copy the Web app URL (ends in /exec) into `rsvp.endpoint` in src/data/event.ts.
  *
  * After editing this script later: Deploy → Manage deployments → edit → Version: New version.
- * (Same URL keeps working.)
+ * (Same URL keeps working.) Mail is sent by whichever Google account deploys this.
  *
  * One row per email. Re-submitting with the same email updates that row.
+ * Each RSVP emails the guest a confirmation and emails NOTIFY_EMAIL a short note.
  */
 
 const SHEET_NAME = 'RSVPs'
-const NOTIFY_EMAIL = '' // optional: put your email here to get a note on every RSVP
+const NOTIFY_EMAIL = 'thevandermeers@gmail.com'
+const FROM_NAME = 'Turkey Ball Classic'
+const GUEST_SUBJECT = 'You’re in! 🦃⚾️ Turkey Ball Classic RSVP confirmed'
 const HEADERS = ['Updated', 'First RSVP', 'Name', 'Email', 'Adults', 'Kids / Thrashers', 'Role', 'Notes']
 
 function doGet() {
@@ -75,19 +78,67 @@ function doPost(e) {
     lock.releaseLock()
   }
 
-  if (NOTIFY_EMAIL) {
-    try {
-      MailApp.sendEmail(
-        NOTIFY_EMAIL,
-        (updated ? 'RSVP updated: ' : 'New RSVP: ') + name,
-        [name, email, adults + ' adults, ' + kids + ' kids', role, notes].filter(Boolean).join('\n'),
-      )
-    } catch (err) {
-      // Email is a nice-to-have; the row is already saved.
-    }
-  }
+  // The row is already saved. A mail failure should not fail the RSVP.
+  try {
+    MailApp.sendEmail({
+      to: email,
+      subject: GUEST_SUBJECT,
+      name: FROM_NAME,
+      replyTo: NOTIFY_EMAIL,
+      body: guestText(),
+      htmlBody: guestHtml(),
+    })
+  } catch (err) {}
+
+  try {
+    MailApp.sendEmail({
+      to: NOTIFY_EMAIL,
+      subject: (updated ? 'RSVP updated: ' : 'New RSVP: ') + name,
+      name: FROM_NAME,
+      replyTo: email,
+      body: [name, email, adults + ' adults, ' + kids + ' kids', role, notes].filter(Boolean).join('\n'),
+    })
+  } catch (err) {}
 
   return json({ ok: true, updated: updated })
+}
+
+function guestText() {
+  return [
+    'You’re officially on the roster! 🦃⚾️',
+    '',
+    'Thanks for RSVPing to the 2nd Annual Turkey Ball Classic! We’re looking forward to a little friendly competition, some Thanksgiving leftovers, and a great day with everyone.',
+    '',
+    '📅 Friday, November 27, 2026',
+    '⏰ First pitch around 11am',
+    '📍 Burbank — field TBD (likely Olive)',
+    '',
+    'Bring leftovers, libations, or just your lovely faces — we’ll handle the rest.',
+    '',
+    'We’re playing our post-Thanksgiving mashup of Wiffle ball and kickball. All ages, all skill levels welcome!',
+    '',
+    'Three strikes? You get one more — but the 4th is a kickball.',
+    '',
+    'If your plans or headcount change, please let us know so we can plan accordingly.',
+    '',
+    'See you on the field!',
+    '',
+    'www.turkeyballclassic.com',
+  ].join('\n')
+}
+
+function guestHtml() {
+  return [
+    '<p>You’re officially on the roster! 🦃⚾️</p>',
+    '<p>Thanks for RSVPing to the <strong>2nd Annual Turkey Ball Classic!</strong> We’re looking forward to a little friendly competition, some Thanksgiving leftovers, and a great day with everyone.</p>',
+    '<p>📅 <strong>Friday, November 27, 2026</strong><br>⏰ <strong>First pitch around 11am</strong><br>📍 <strong>Burbank — field TBD (likely Olive)</strong></p>',
+    '<p>Bring leftovers, libations, or just your lovely faces — we’ll handle the rest.</p>',
+    '<p>We’re playing our post-Thanksgiving mashup of Wiffle ball and kickball. All ages, all skill levels welcome!</p>',
+    '<p>Three strikes? You get one more — but the 4th is a kickball.</p>',
+    '<p>If your plans or headcount change, please let us know so we can plan accordingly.</p>',
+    '<p>See you on the field!</p>',
+    '<p><a href="https://www.turkeyballclassic.com">www.turkeyballclassic.com</a></p>',
+  ].join('')
 }
 
 function getSheet() {
