@@ -21,7 +21,8 @@ export const event = {
  * Setup steps are at the top of rsvp/apps-script.gs. Empty = form shows "not open yet".
  */
 export const rsvp = {
-  endpoint: '',
+  endpoint:
+    'https://script.google.com/macros/s/AKfycbylcnKW3v-59bE8eFih2pTrGmzISTbKiDbGBFQIW690K7DcV5rkLWhrZHKhiv59_44E/exec',
 } as const
 
 export const rules = [
