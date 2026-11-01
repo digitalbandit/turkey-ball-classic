@@ -9,7 +9,7 @@ export const event = {
   time: '11:00AM',
   timePretty: '11:00 AM',
   location: 'George Izay Park',
-  field: 'Olive Field 3',
+  field: '',
   city: 'Burbank, CA',
   mapsUrl: 'https://maps.google.com/?q=George+Izay+Park+Burbank+CA',
   tagline: "Last Night's Turkey.\nToday's Glory.",
@@ -94,7 +94,7 @@ export const faqs = [
   },
   {
     q: 'Where do I park?',
-    a: 'George Izay Park in Burbank. Olive Field 3. Lot parking is the usual park situation — roll in early, don’t block the rec-center flow, and walk over.',
+    a: 'George Izay Park in Burbank. Lot parking is the usual park situation — roll in early, don’t block the rec-center flow, and walk over.',
   },
   {
     q: 'What if it rains?',

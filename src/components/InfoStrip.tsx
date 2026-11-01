@@ -29,7 +29,7 @@ export function InfoStrip() {
         <IconPin className="info-icon" />
         <div>
           <p className="info-main">{event.location}</p>
-          <p className="info-sub">({event.field})</p>
+          <p className="info-sub">{event.field ? `(${event.field})` : event.city}</p>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ export function NotFoundPage() {
         <p className="hand-kicker">Foul ball</p>
         <h1>Page not found</h1>
         <p className="page-lede">
-          That URL wandered into the parking lot. The Classic is still at Olive Field 3.
+          That URL wandered into the parking lot. The Classic is still at George Izay Park.
         </p>
       </header>
       <div className="page-cta">

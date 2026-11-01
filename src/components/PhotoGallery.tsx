@@ -1,6 +1,6 @@
 import { useEffect, useId, useState } from 'react'
 import { lastYearPhotos, lastYearVideo } from '../data/event'
-import { Crown } from './Icons'
+import { WiffleMark } from './Icons'
 import { Reveal } from './Reveal'
 
 export function PhotoGallery() {
@@ -38,7 +38,7 @@ export function PhotoGallery() {
           <p className="hand-kicker">From the 1st Annual</p>
           <h2 id={headingId}>Last Year</h2>
           <p>Glory, grass stains, and one very small trophy.</p>
-          <Crown className="gallery-crown" />
+          <WiffleMark className="gallery-crown" />
         </header>
       </Reveal>
 

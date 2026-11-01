@@ -34,8 +34,12 @@ export function DetailsPage() {
             <p className="eyebrow">Field</p>
             <h2>{event.location}</h2>
             <p>
-              {event.field}
-              <br />
+              {event.field ? (
+                <>
+                  {event.field}
+                  <br />
+                </>
+              ) : null}
               {event.city}
             </p>
             <a className="text-link" href={event.mapsUrl} target="_blank" rel="noreferrer">

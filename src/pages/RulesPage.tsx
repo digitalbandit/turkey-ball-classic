@@ -2,7 +2,7 @@ import { InkButton } from '../components/InkButton'
 import { KickDiagram } from '../components/RulesSection'
 import { Reveal } from '../components/Reveal'
 import { rules } from '../data/event'
-import { Crown } from '../components/Icons'
+import { WiffleMark } from '../components/Icons'
 
 export function RulesPage() {
   return (
@@ -31,7 +31,7 @@ export function RulesPage() {
                 </li>
               ))}
             </ol>
-            <Crown className="rules-crown" />
+            <WiffleMark className="rules-crown" />
           </article>
         </Reveal>
 

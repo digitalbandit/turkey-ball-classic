@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Crown, IconClose, IconMenu } from './Icons'
+import { IconClose, IconMenu, WiffleMark } from './Icons'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -27,7 +27,7 @@ export function Header() {
           <span>Turkey Ball</span>
           <span>Classic</span>
         </span>
-        <Crown className="brand-crown" />
+        <WiffleMark className="brand-crown" />
       </Link>
 
       <nav className="site-nav" aria-label="Primary">

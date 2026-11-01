@@ -2,27 +2,51 @@ import type { SVGProps } from 'react'
 
 type IconProps = SVGProps<SVGSVGElement>
 
-export function Crown({ className, ...props }: IconProps) {
+export function WiffleMark({ className, ...props }: IconProps) {
   return (
     <svg
-      viewBox="0 0 28 18"
+      viewBox="0 0 64 64"
       fill="none"
       aria-hidden="true"
       className={className}
       {...props}
     >
-      <path
-        d="M3.2 15.4 5.1 4.8c.12-.7 1.05-.86 1.4-.24L10.2 11 13.7 2.6c.28-.66 1.22-.66 1.5 0L18.8 11l3.6-6.4c.36-.64 1.3-.48 1.42.22l1.9 10.6"
+      <circle cx="32" cy="32" r="26.5" stroke="currentColor" strokeWidth="3.2" />
+      <ellipse
+        cx="22"
+        cy="20"
+        rx="3.3"
+        ry="7.1"
+        transform="rotate(-24 22 20)"
         stroke="currentColor"
-        strokeWidth="1.45"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeWidth="2.6"
       />
-      <path
-        d="M4 15.6h20"
+      <ellipse
+        cx="33.5"
+        cy="16.5"
+        rx="3.5"
+        ry="8"
+        transform="rotate(6 33.5 16.5)"
         stroke="currentColor"
-        strokeWidth="1.45"
-        strokeLinecap="round"
+        strokeWidth="2.6"
+      />
+      <ellipse
+        cx="46"
+        cy="29"
+        rx="3.3"
+        ry="7.2"
+        transform="rotate(46 46 29)"
+        stroke="currentColor"
+        strokeWidth="2.6"
+      />
+      <ellipse
+        cx="41.5"
+        cy="46"
+        rx="3.1"
+        ry="6.4"
+        transform="rotate(74 41.5 46)"
+        stroke="currentColor"
+        strokeWidth="2.6"
       />
     </svg>
   )

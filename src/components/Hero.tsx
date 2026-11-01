@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { event } from '../data/event'
-import { BrushUnderline, Crown } from './Icons'
+import { BrushUnderline, WiffleMark } from './Icons'
 import { InkButton } from './InkButton'
 import { ParkBackdrop } from './ParkBackdrop'
 
@@ -30,7 +30,7 @@ export function Hero() {
         <div className="hero-stage">
           <div className="hero-copy">
             <p className="hero-annual">
-              <Crown className="hero-annual-crown" />
+              <WiffleMark className="hero-annual-crown" />
               {event.annual}
             </p>
             <h1 id="hero-title" className="hero-title">

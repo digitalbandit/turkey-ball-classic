@@ -217,9 +217,9 @@ main {
 }
 
 .brand-crown {
-  width: 1.05rem;
+  width: 1.55rem;
   color: var(--orange);
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
 }
 
 .site-nav {
@@ -298,7 +298,7 @@ main {
 }
 
 .footer-crown {
-  width: 1.6rem;
+  width: 1.7rem;
   color: var(--orange);
   justify-self: center;
 }
@@ -378,9 +378,9 @@ main {
 }
 
 .hero-annual-crown {
-  width: 1.35rem;
+  width: 1.7rem;
   color: var(--navy);
-  transform: rotate(8deg) translateY(-0.35rem);
+  transform: rotate(8deg) translateY(-0.15rem);
 }
 
 .hero-title {
@@ -720,7 +720,7 @@ main {
   position: absolute;
   right: 1.1rem;
   bottom: 0.8rem;
-  width: 1.35rem;
+  width: 1.7rem;
   color: var(--navy);
 }
 
@@ -775,9 +775,9 @@ main {
 
 .polaroid-crown {
   position: absolute;
-  right: 0.15rem;
-  bottom: 0.15rem;
-  width: 1.3rem;
+  right: 0.35rem;
+  bottom: 0.35rem;
+  width: 1.55rem;
   color: var(--navy);
 }
 
@@ -828,7 +828,7 @@ main {
 }
 
 .gallery-crown {
-  width: 1.4rem;
+  width: 1.85rem;
   color: var(--orange);
   margin: 0.7rem auto 0;
 }
@@ -1307,7 +1307,7 @@ body.lightbox-open {
 }
 
 .clipboard-clip svg {
-  width: 1.4rem;
+  width: 1.55rem;
 }
 
 .clipboard-paper {

@@ -1,5 +1,5 @@
 import { rules } from '../data/event'
-import { Crown } from './Icons'
+import { WiffleMark } from './Icons'
 import { Reveal } from './Reveal'
 
 export function KickDiagram() {
@@ -30,7 +30,7 @@ export function Polaroid() {
         Same Crew.
         <br />
         Bigger Plays.
-        <Crown className="polaroid-crown" />
+        <WiffleMark className="polaroid-crown" />
       </figcaption>
     </figure>
   )
@@ -54,7 +54,7 @@ export function RulesSection() {
                 </li>
               ))}
             </ol>
-            <Crown className="rules-crown" />
+            <WiffleMark className="rules-crown" />
           </article>
         </Reveal>
         <Reveal>

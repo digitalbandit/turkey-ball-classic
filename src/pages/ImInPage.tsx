@@ -1,5 +1,5 @@
 import { FormEvent, useMemo, useState } from 'react'
-import { Crown } from '../components/Icons'
+import { WiffleMark } from '../components/Icons'
 import { rsvp } from '../data/event'
 
 type Rsvp = {
@@ -87,14 +87,14 @@ export function ImInPage() {
 
       <div className="clipboard">
         <div className="clipboard-clip" aria-hidden="true">
-          <Crown />
+          <WiffleMark />
         </div>
         {done ? (
           <div className="clipboard-paper">
             <p className="hand-kicker">You’re on the list</p>
             <h2>{done.name}</h2>
             <p>
-              See you Friday at Olive Field 3. We’ll use this for the Thanksgiving-night
+              See you Friday at George Izay Park. We’ll use this for the Thanksgiving-night
               draft.
             </p>
             <dl className="rsvp-dl">
@@ -152,7 +152,7 @@ export function ImInPage() {
                 />
               </label>
               <label>
-                Kids / Thrashers
+                Kids
                 <input
                   required
                   inputMode="numeric"
